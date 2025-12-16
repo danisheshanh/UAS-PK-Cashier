@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Kasir Coffee Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-coffee"></i> Coffee Shop Cashier</h1>
+            <p class="subtitle">Kalkulator kasir untuk coffee shop</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Kolom Kiri: Menu dan Input -->
+            <div class="left-column">
+                <section class="menu-section">
+                    <h2><i class="fas fa-list"></i> Pilih Menu</h2>
+                    
+                    <div class="input-group">
+                        <label for="menu-select"><i class="fas fa-mug-hot"></i> Pilih Minuman/Makanan:</label>
+                        <select id="menu-select" class="form-control">
+                            <!-- Options akan diisi oleh JavaScript -->
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="quantity"><i class="fas fa-sort-numeric-up"></i> Jumlah:</label>
+                        <div class="quantity-control">
+                            <button type="button" id="decrease-qty" class="qty-btn"><i class="fas fa-minus"></i></button>
+                            <input type="number" id="quantity" value="1" min="1" max="20" class="qty-input">
+                            <button type="button" id="increase-qty" class="qty-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="price-display">
+                        <span>Harga Satuan:</span>
+                        <span id="item-price" class="price">Rp 0</span>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="member-checkbox">
+                            <input type="checkbox" id="member-checkbox">
+                            <span><i class="fas fa-crown"></i> Pelanggan Member (Diskon 10%)</span>
+                        </label>
+                    </div>
+                    
+                    <button id="add-to-order" class="btn btn-primary">
+                        <i class="fas fa-plus-circle"></i> Tambah ke Pesanan
+                    </button>
+                </section>
+                
+                <section class="available-menu">
+                    <h2><i class="fas fa-book-open"></i> Menu Tersedia</h2>
+                    <div id="menu-list" class="menu-grid">
+                        <!-- Daftar menu akan diisi oleh JavaScript -->
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Kolom Kanan: Pesanan dan Ringkasan -->
+            <div class="right-column">
+                <section class="order-section">
+                    <h2><i class="fas fa-shopping-cart"></i> Daftar Pesanan</h2>
+                    <div id="order-items" class="order-items">
+                        <p class="empty-order">Belum ada pesanan. Silakan tambahkan item dari menu.</p>
+                    </div>
+                    
+                    <div class="order-summary">
+                        <h3><i class="fas fa-receipt"></i> Ringkasan Pembayaran</h3>
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">Rp 0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Diskon:</span>
+                            <span id="discount">Rp 0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>TOTAL:</span>
+                            <span id="total">Rp 0</span>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button id="calculate-total" class="btn btn-success">
+                                <i class="fas fa-calculator"></i> Hitung Total
+                            </button>
+                            <button id="reset-order" class="btn btn-danger">
+                                <i class="fas fa-trash-alt"></i> Reset Pesanan
+                            </button>
+                            <button id="print-receipt" class="btn btn-secondary">
+                                <i class="fas fa-print"></i> Cetak Struk
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div id="status" class="status">
+                <i class="fas fa-info-circle"></i> Siap menerima pesanan...
+            </div>
+            <div class="time">
+                <i class="far fa-clock"></i> <span id="current-time">--:--:--</span>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Modal untuk struk -->
+    <div id="receipt-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-receipt"></i> Struk Pembayaran</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="receipt-content">
+                    <!-- Konten struk akan diisi oleh JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="menu.js"></script>
+    <script type="module" src="order.js"></script>
+    <script type="module" src="ui.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
